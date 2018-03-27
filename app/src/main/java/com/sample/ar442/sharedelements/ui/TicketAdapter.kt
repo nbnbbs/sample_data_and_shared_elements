@@ -38,9 +38,9 @@ class TicketAdapter(private val onItemClickListener: (ticket: Ticket) -> Unit) :
 
     class TicketViewHolder(itemView: View, private val onItemClickListener: (ticket: Ticket) -> Unit) : ViewHolder(itemView) {
 
-        private val departureToView: TextView = itemView.findViewById(R.id.item_title)
+        private val departureToView: TextView = itemView.findViewById(R.id.info_title)
         private val dateView: TextView = itemView.findViewById(R.id.item_date)
-        private val photo: ImageView = itemView.findViewById(R.id.item_photo)
+        private val photo: ImageView = itemView.findViewById(R.id.info_photo)
 
         fun bindTo(ticket: Ticket) {
             itemView.setOnClickListener { onItemClickListener.invoke(ticket) }
