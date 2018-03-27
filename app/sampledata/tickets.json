@@ -1,0 +1,46 @@
+{
+  "tickets": [
+    {
+      "id": 1,
+      "titleColor": "#FF0000",
+      "date": "12-12-22",
+      "image": "@drawable/cat1"
+    },
+    {
+      "id": 2,
+      "titleColor": "#FF00FA",
+      "date": "13-12-22",
+      "image": "@drawable/cat2"
+    },
+    {
+      "id": 3,
+      "titleColor": "#FF00FF",
+      "date": "14-12-22",
+      "image": "@drawable/cat1"
+    },
+    {
+      "id": 4,
+      "titleColor": "#AAFFFF",
+      "date": "15-12-22",
+      "image": "@drawable/cat2"
+    },
+    {
+      "id": 5,
+      "titleColor": "#FFAAFF",
+      "date": "16-12-22",
+      "image": "@drawable/cat1"
+    },
+    {
+      "id": 6,
+      "titleColor": "#FFFFAA",
+      "date": "17-12-22",
+      "image": "@drawable/cat2"
+    },
+    {
+      "id": 7,
+      "titleColor": "#FF00FF",
+      "date": "18-12-22",
+      "image": "@drawable/cat1"
+    }
+  ]
+}
