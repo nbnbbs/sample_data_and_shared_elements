@@ -53,6 +53,7 @@ class InfoFragment : Fragment() {
         photoView.setImageResource(ticket.clientPhoto)
         titleView.transitionName = getDepartureTransitionName()
         titleView.text = ticket.departureTo
+        startPostponedEnterTransition()
     }
 
     private fun getTicket(): Ticket = arguments?.getSerializable(TICKET_KEY) as? Ticket ?: throw IllegalStateException("Ticket can't be null")
