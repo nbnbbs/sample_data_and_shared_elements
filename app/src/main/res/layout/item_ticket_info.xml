@@ -11,7 +11,7 @@
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/item_title"
+        android:id="@+id/info_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -29,12 +29,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto"
-        app:layout_constraintStart_toStartOf="@+id/item_title"
-        app:layout_constraintTop_toBottomOf="@+id/item_title"
+        app:layout_constraintStart_toStartOf="@+id/info_title"
+        app:layout_constraintTop_toBottomOf="@+id/info_title"
         tools:text="@sample/tickets.json/tickets/date" />
 
     <ImageView
-        android:id="@+id/item_photo"
+        android:id="@+id/info_photo"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginEnd="8dp"

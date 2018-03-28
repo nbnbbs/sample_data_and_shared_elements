@@ -1,4 +1,4 @@
-package com.sample.ar442.sharedelements
+package com.sample.ar442.sharedelements.ui
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,7 +7,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import com.sample.ar442.sharedelements.R
+import com.sample.ar442.sharedelements.R.layout
+import com.sample.ar442.sharedelements.data.Ticket
 
 class ListFragment : Fragment() {
 
@@ -15,7 +17,7 @@ class ListFragment : Fragment() {
     private lateinit var adapter: TicketAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = inflater.inflate(
-            R.layout.fragment_list,
+            layout.fragment_list,
             container,
             false
     )
@@ -31,8 +33,13 @@ class ListFragment : Fragment() {
     }
 
     private fun onTicketClicked(ticket: Ticket) {
-        //todo: заменить на открытие фрагмента с детальной информацией
-        Toast.makeText(context, "To: ${ticket.departureTo}; Departure date: ${ticket.departureDate}", Toast.LENGTH_SHORT).show()
+        val fragment = InfoFragment.getInstanceFor(ticket)
+        activity?.supportFragmentManager?.run { //todo: сделай нормально, ну что ты
+            beginTransaction()
+                    .addToBackStack(tag)
+                    .replace(R.id.main_content, fragment) //todo: заменить на нормальную реализацию. возможно навесить интерфейс на аквтивити с кастом
+                    .commit()
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-package com.sample.ar442.sharedelements
+package com.sample.ar442.sharedelements.ui
 
 import android.support.v7.recyclerview.extensions.ListAdapter
 import android.support.v7.util.DiffUtil
@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.sample.ar442.sharedelements.TicketAdapter.TicketViewHolder
+import com.sample.ar442.sharedelements.R.id
+import com.sample.ar442.sharedelements.R.layout
+import com.sample.ar442.sharedelements.data.Ticket
+import com.sample.ar442.sharedelements.ui.TicketAdapter.TicketViewHolder
 
 class TicketAdapter(private val onItemClickListener: (ticket: Ticket) -> Unit) : ListAdapter<Ticket, TicketViewHolder>(differ) {
 
@@ -25,7 +28,7 @@ class TicketAdapter(private val onItemClickListener: (ticket: Ticket) -> Unit) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = TicketViewHolder(
             LayoutInflater.from(parent.context)
                     .inflate(
-                            R.layout.item_ticket_info,
+                            layout.item_ticket_info,
                             parent,
                             false
                     ),
@@ -38,9 +41,9 @@ class TicketAdapter(private val onItemClickListener: (ticket: Ticket) -> Unit) :
 
     class TicketViewHolder(itemView: View, private val onItemClickListener: (ticket: Ticket) -> Unit) : ViewHolder(itemView) {
 
-        private val departureToView: TextView = itemView.findViewById(R.id.info_title)
-        private val dateView: TextView = itemView.findViewById(R.id.item_date)
-        private val photo: ImageView = itemView.findViewById(R.id.info_photo)
+        private val departureToView: TextView = itemView.findViewById(id.info_title)
+        private val dateView: TextView = itemView.findViewById(id.item_date)
+        private val photo: ImageView = itemView.findViewById(id.info_photo)
 
         fun bindTo(ticket: Ticket) {
             itemView.setOnClickListener { onItemClickListener.invoke(ticket) }

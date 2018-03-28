@@ -2,6 +2,7 @@ package com.sample.ar442.sharedelements
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.sample.ar442.sharedelements.ui.ListFragment
 
 class MainActivity : AppCompatActivity() {
 
