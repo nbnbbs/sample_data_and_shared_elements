@@ -1,5 +1,6 @@
 package com.sample.ar442.sharedelements.ui
 
+import android.support.v4.view.ViewCompat
 import android.support.v7.recyclerview.extensions.ListAdapter
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView.ViewHolder
@@ -13,7 +14,7 @@ import com.sample.ar442.sharedelements.R.layout
 import com.sample.ar442.sharedelements.data.Ticket
 import com.sample.ar442.sharedelements.ui.TicketAdapter.TicketViewHolder
 
-class TicketAdapter(private val onItemClickListener: (ticket: Ticket) -> Unit) : ListAdapter<Ticket, TicketViewHolder>(differ) {
+class TicketAdapter(private val onItemClickListener: (ticket: Ticket, transitionView: View, departureView: View) -> Unit) : ListAdapter<Ticket, TicketViewHolder>(differ) {
 
     companion object {
         private val differ = object : DiffUtil.ItemCallback<Ticket>() {
@@ -39,17 +40,22 @@ class TicketAdapter(private val onItemClickListener: (ticket: Ticket) -> Unit) :
         holder.bindTo(getItem(position))
     }
 
-    class TicketViewHolder(itemView: View, private val onItemClickListener: (ticket: Ticket) -> Unit) : ViewHolder(itemView) {
+    class TicketViewHolder(
+            itemView: View,
+            private val onItemClickListener: (ticket: Ticket, photoView: View, departureView: View) -> Unit
+    ) : ViewHolder(itemView) {
 
         private val departureToView: TextView = itemView.findViewById(id.info_title)
         private val dateView: TextView = itemView.findViewById(id.item_date)
         private val photo: ImageView = itemView.findViewById(id.info_photo)
 
         fun bindTo(ticket: Ticket) {
-            itemView.setOnClickListener { onItemClickListener.invoke(ticket) }
             departureToView.text = ticket.departureTo
             dateView.text = ticket.departureDate
             photo.setImageResource(ticket.clientPhoto)
+            ViewCompat.setTransitionName(photo, "photo:$ticket")
+            ViewCompat.setTransitionName(departureToView, "departureTo:$ticket")
+            itemView.setOnClickListener { onItemClickListener.invoke(ticket, photo, departureToView) }
         }
 
     }

@@ -32,10 +32,16 @@ class ListFragment : Fragment() {
         adapter.submitList(Ticket.createMockedList())
     }
 
-    private fun onTicketClicked(ticket: Ticket) {
-        val fragment = InfoFragment.getInstanceFor(ticket)
-        activity?.supportFragmentManager?.run { //todo: сделай нормально, ну что ты
+    private fun onTicketClicked(ticket: Ticket, photoView: View, departureView: View) {
+        val photoName = photoView.transitionName
+        val departureName = departureView.transitionName
+        val fragment = InfoFragment.getInstanceFor(ticket, photoName, departureName)
+        activity?.supportFragmentManager?.run {
+            //todo: сделай нормально, ну что ты
+            //todo: пофиксить баг с переходом к первому элементу из фрагмента деталей
             beginTransaction()
+                    .addSharedElement(photoView, photoName)
+                    .addSharedElement(departureView, departureName)
                     .addToBackStack(tag)
                     .replace(R.id.main_content, fragment) //todo: заменить на нормальную реализацию. возможно навесить интерфейс на аквтивити с кастом
                     .commit()
